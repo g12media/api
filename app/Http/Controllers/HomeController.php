@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use DB;
 use App\Category;
 use App\Video;
 use App\Audio;
@@ -31,7 +32,12 @@ class HomeController extends Controller
     }
 
     public function getCategories(){
-      return Category::all();
+      $categories = DB::table('categories as category')
+      ->select('category.*')
+      ->get();
+
+      //return json_decode($categories);
+      return $categories;
     }
 
     public function getVideosByCategory($categoryId){
