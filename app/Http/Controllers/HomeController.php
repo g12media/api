@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
+use App\Category;
+use App\Video;
+use App\Audio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,6 +29,16 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function getCategories(){
+      return Category::all();
+    }
+
+    public function getVideosByCategory($categoryId){
+      return Video::where('categoryId',$categoryId)->get();
+    }
+
+
     public function redirectURL(){
 
       if(Auth::user()){

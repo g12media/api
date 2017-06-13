@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Category;
+use App\Video;
+use App\Audio;
 use DB;
 use App\FormControl;
 use Illuminate\Http\Request;
@@ -15,19 +18,6 @@ class AdminController extends Controller
 {
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
       public function homeAdmin (){
 
         /*$users = DB::table('users as u')
@@ -36,8 +26,48 @@ class AdminController extends Controller
         ->where('u.userType', '=', 'user')
         ->get();
         return view('admin.index')->with('users',$users);*/
-        return view('admin.index');
+        $categories = Category::all();
+
+        $videos = DB::table('Videos as video')
+        ->join('Categories as category', 'category.id', '=', 'video.categoryId')
+        ->select('video.*','category.name as categoryName')
+        ->get();
+
+        return view('admin.index')
+                  ->with('categories',$categories)
+                  ->with('videos',$videos);
       }
+
+      public function saveCategory(Request $request){
+          $category = new Category;
+          $category->name = $request->name_category;
+          if($request->imagen_diagnostica){
+             $image = $request->image_category;
+             $filename  = time().'.'.$image->getClientOriginalExtension();
+             $path = public_path('uploads/images/'.$filename);
+             Image::make($image->getRealPath())->resize(400, 400)->save($path);
+             $image_category = $filename;
+          }else{
+             $image_category = 'none';
+          }
+          $category->image = $image_category;
+          $category->description = $request->name_category;
+          $category->save();
+          return redirect('admin');
+      }
+
+      public function saveVideo(Request $request){
+          $video = new Video;
+          $video->categoryId = $request->category_id;
+          $video->name = $request->name_video;
+          $video->url = $request->url_video;
+          $video->type = $request->video_type;
+          $video->keywords = $request->keywords_video;
+          $video->description = $request->description_video;
+          $video->save();
+          return redirect('admin');
+      }
+
 
       public function certificate (Request $request){
 
