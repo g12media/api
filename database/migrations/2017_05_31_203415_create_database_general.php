@@ -28,7 +28,7 @@ class CreateDatabaseGeneral extends Migration
             /* Foreign key Categories */
             $table->integer('categoryId')->unsigned();
             $table->foreign('categoryId')
-                ->references('id')->on('Categories')
+                ->references('id')->on('categories')
                 ->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('url')->nullable();
@@ -43,7 +43,7 @@ class CreateDatabaseGeneral extends Migration
             /* Foreign key Categories */
             $table->integer('categoryId')->unsigned();
             $table->foreign('categoryId')
-                ->references('id')->on('Categories')
+                ->references('id')->on('categories')
                 ->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('url')->nullable();

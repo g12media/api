@@ -28,8 +28,8 @@ class AdminController extends Controller
         return view('admin.index')->with('users',$users);*/
 
         $categories = Category::all();
-        $videos = DB::table('Videos as video')
-        ->join('Categories as category', 'category.id', '=', 'video.categoryId')
+        $videos = DB::table('videos as video')
+        ->join('categories as category', 'category.id', '=', 'video.categoryId')
         ->select('video.*','category.name as categoryName')
         ->get();
 
