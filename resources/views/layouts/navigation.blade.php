@@ -7,7 +7,7 @@
             <!-- Logo -->
             <a class="logo" href="index.html">
               <b>
-                <img src="{{URL::asset('assets/plugins/images/arm_logo2.png')}}" alt="home" class="light-logo" />
+                API G12
              </b>
             </a>
         </div>

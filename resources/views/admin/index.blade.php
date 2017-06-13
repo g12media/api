@@ -188,8 +188,6 @@
                     <ul class="nav customtab nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#categories" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-home"></i></span><span class="hidden-xs"> Categorias</span></a></li>
                         <li role="presentation" class=""><a href="#videos" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Videos</span></a></li>
-                        <li role="presentation" class=""><a href="#audios" aria-controls="messages" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-email"></i></span> <span class="hidden-xs">Audio</span></a></li>
-
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
@@ -250,35 +248,7 @@
                           </div>
                           <div class="clearfix"></div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="audios">
-                          <div class="col-md-6">
 
-                              <div class="table-responsive">
-                                  <table id="myTable" class="table table-striped">
-                                      <thead>
-                                          <tr>
-                                              <th>Categoria</th>
-                                              <th>Tipo</th>
-                                              <th>Nombre</th>
-                                              <th>Url</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody>
-
-                                      </tbody>
-                                  </table>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <a href="" data-toggle="modal" data-target="#audios -modal" class="model_img img-responsive">Agregar Video</a>
-                              <div class="table-responsive">
-                                  <table id="audioTableSoundcloud" class="table table-striped">
-
-                                  </table>
-                              </div>
-                          </div>
-                            <div class="clearfix"></div>
-                        </div>
                     </div>
 
 
@@ -327,12 +297,7 @@ SC.get('/tracks', {
   dataSet.push([element.title])
   });
   console.log(dataSet)
-  $('#audioTableSoundcloud').DataTable({
-      data: dataSet,
-      columns: [
-          { title: "Name" }
-      ]
-  } );
+  
 });
 //console.log(dataSet)
 

@@ -6,7 +6,7 @@ use App\User;
 use App\Category;
 use App\Video;
 use App\Audio;
-use DB;
+use DB,Image;
 use App\FormControl;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -26,8 +26,8 @@ class AdminController extends Controller
         ->where('u.userType', '=', 'user')
         ->get();
         return view('admin.index')->with('users',$users);*/
-        $categories = Category::all();
 
+        $categories = Category::all();
         $videos = DB::table('Videos as video')
         ->join('Categories as category', 'category.id', '=', 'video.categoryId')
         ->select('video.*','category.name as categoryName')
@@ -41,7 +41,7 @@ class AdminController extends Controller
       public function saveCategory(Request $request){
           $category = new Category;
           $category->name = $request->name_category;
-          if($request->imagen_diagnostica){
+          if($request->image_category){
              $image = $request->image_category;
              $filename  = time().'.'.$image->getClientOriginalExtension();
              $path = public_path('uploads/images/'.$filename);
@@ -68,9 +68,7 @@ class AdminController extends Controller
           return redirect('admin');
       }
 
-
       public function certificate (Request $request){
-
           return view('admin.create-certificate');
       }
 
