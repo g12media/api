@@ -14,7 +14,7 @@ class CreateDatabaseGeneral extends Migration
     public function up()
     {
 
-      Schema::create('Categories', function (Blueprint $table) {
+      Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             /* Foreign key Users */
             $table->string('name')->nullable();
@@ -23,7 +23,7 @@ class CreateDatabaseGeneral extends Migration
             $table->timestamps();
       });
 
-      Schema::create('Videos', function (Blueprint $table) {
+      Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
             /* Foreign key Categories */
             $table->integer('categoryId')->unsigned();
@@ -38,7 +38,7 @@ class CreateDatabaseGeneral extends Migration
             $table->timestamps();
       });
 
-      Schema::create('Audios', function (Blueprint $table) {
+      Schema::create('audios', function (Blueprint $table) {
             $table->increments('id');
             /* Foreign key Categories */
             $table->integer('categoryId')->unsigned();
