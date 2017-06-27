@@ -93,25 +93,35 @@
 </div>
 
 
-<div id="audiosModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+
+
+
+<div id="audios-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">Agregar Audio</h4> </div>
-                <form action="admin/audio" method="post" name="form-category" enctype="multipart/form-data">
-                  <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
-                  <div class="modal-body">
+            <div class="modal-body">
+                <form action="audio" method="post" name="form-category" enctype="multipart/form-data">>
+                  <div class="form-group">
+                      <label for="recipient-name" class="control-label">Categoria:</label>
+                      <select name="category_id" name="category_id">
+                          <option value="">Seleccione una opcion</option>
+                          @foreach($categories as $category)
+                          <option value="{{$category->id}}">{{$category->name}}</option>
+                          @endforeach
+                      </select>
+                  </div>
+
                     <div class="form-group">
-                        <label for="recipient-name" class="control-label">Categoria:</label>
-                        <select name="category_id" name="category_id">
+                        <label for="recipient-name" class="control-label">Tipo Video:</label>
+                        <select name="video_type">
                             <option value="">Seleccione una opcion</option>
-                            @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                            @endforeach
+                            <option value="youtube">Youtube</option>
+                            <option value="youtube">Vimeo</option>
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label for="recipient-name" class="control-label">Nombre Audio:</label>
                         <input type="text" class="form-control" name="name_audio" id="name_audio">
@@ -121,20 +131,15 @@
                         <input type="text" class="form-control" name="url_audio" id="url_audio">
                     </div>
                     <div class="form-group">
-                        <label for="recipient-name" class="control-label">Image Audio:</label>
-                        <input type="file" class="form-control" name="image_audio" id="image_audio" />
-                    </div>
-                    <div class="form-group">
                         <label for="recipient-name" class="control-label">Keywords Video:</label>
                         <input type="text" class="form-control" name="keywords_audio" id="keywords_audio">
                     </div>
-
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                 <input type="submit" class="btn btn-danger waves-effect waves-light" value="Save changes" />
             </div>
-            </form>
         </div>
     </div>
 </div>
@@ -183,8 +188,6 @@
                     <ul class="nav customtab nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#categories" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-home"></i></span><span class="hidden-xs"> Categorias</span></a></li>
                         <li role="presentation" class=""><a href="#videos" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Videos</span></a></li>
-                        <li role="presentation" class=""><a href="#audios" aria-controls="messages" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-email"></i></span> <span class="hidden-xs">Audio</span></a></li>
-
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
@@ -198,7 +201,6 @@
                                                 <th>Id</th>
                                                 <th>Nombre</th>
                                                 <th>Descripcion</th>
-                                                <th>Editar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -207,7 +209,6 @@
                                                 <th>{{$category->id}}</th>
                                                 <th>{{$category->name}}</th>
                                                 <th>{{$category->description}}</th>
-                                                <th><a href="admin/edit/{{$category->id}}">Editar</a></th>
                                             </tr>
                                             @endforeach
 
@@ -229,7 +230,6 @@
                                               <th>Tipo</th>
                                               <th>Nombre</th>
                                               <th>Url</th>
-                                              <th>Ediatr</th>
                                           </tr>
                                       </thead>
                                       <tbody>
@@ -240,7 +240,6 @@
                                               <th>{{$video->type}}</th>
                                               <th>{{$video->name}}</th>
                                               <th>{{$video->url}}</th>
-                                              <th><a href="admin/edit-video/{{$video->id}}">Editar</a></th>
                                           </tr>
                                           @endforeach
                                       </tbody>
@@ -249,37 +248,7 @@
                           </div>
                           <div class="clearfix"></div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="audios">
-                          <div class="col-md-12">
-                              <a href="#" data-toggle="modal" data-target="#audiosModal" class="model_img img-responsive">Agregar Audio</a>
-                              <div class="table-responsive">
-                                  <table id="myTable" class="table table-striped">
-                                      <thead>
-                                          <tr>
-                                              <th>Categoria</th>
-                                              <th>Tipo</th>
-                                              <th>Nombre</th>
-                                              <th>Url</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody>
-                                          @foreach($audios as $audio)
-                                          <tr>
 
-                                              <th>{{$audio->categoryName}}</th>
-                
-                                              <th>{{$audio->name}}</th>
-                                              <th>{{$audio->url}}</th>
-                                              <th><a href="admin/edit-video/{{$audio->id}}">Editar</a></th>
-                                          </tr>
-                                          @endforeach
-                                      </tbody>
-                                  </table>
-                              </div>
-                          </div>
-
-                            <div class="clearfix"></div>
-                        </div>
                     </div>
 
 
@@ -328,12 +297,7 @@ SC.get('/tracks', {
   dataSet.push([element.title])
   });
   console.log(dataSet)
-  $('#audioTableSoundcloud').DataTable({
-      data: dataSet,
-      columns: [
-          { title: "Name" }
-      ]
-  } );
+  
 });
 //console.log(dataSet)
 

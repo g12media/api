@@ -35,11 +35,6 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','AccessAdmin']],function()
   Route::get('/', 'AdminController@homeAdmin');
   Route::post('/category', 'AdminController@saveCategory');
   Route::post('/video', 'AdminController@saveVideo');
-  Route::get('/edit/{id}', 'AdminController@editCategory');
-  Route::post('/edit/{id}', 'AdminController@updateCategory');
-  Route::get('/edit-video/{id}', 'AdminController@editVideo');
-  Route::post('/edit-video/{id}', 'AdminController@updateVideo');
-  Route::post('/audio', 'AdminController@saveAudio');
 
 
 });

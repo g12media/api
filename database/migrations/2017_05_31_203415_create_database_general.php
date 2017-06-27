@@ -19,6 +19,7 @@ class CreateDatabaseGeneral extends Migration
             /* Foreign key Users */
             $table->string('name')->nullable();
             $table->string('image')->nullable();
+            $table->boolean('visible')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
       });
@@ -33,6 +34,7 @@ class CreateDatabaseGeneral extends Migration
             $table->string('name')->nullable();
             $table->string('url')->nullable();
             $table->string('type')->nullable();
+            $table->string('date')->nullable();
             $table->string('keywords')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
@@ -47,6 +49,7 @@ class CreateDatabaseGeneral extends Migration
                 ->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('url')->nullable();
+            $table->string('img_profile')->nullable();
             $table->string('type')->nullable();
             $table->string('keywords')->nullable();
             $table->text('description')->nullable();
