@@ -52,7 +52,7 @@ class AdminController extends Controller
              $image = $request->image_category;
              $filename  = time().'.'.$image->getClientOriginalExtension();
              $path = public_path('uploads/images/'.$filename);
-             Image::make($image->getRealPath())->resize(400, 400)->save($path);
+             Image::make($image->getRealPath())->save($path);
              $image_category = $filename;
           }else{
              $image_category = 'none';
@@ -78,7 +78,7 @@ class AdminController extends Controller
              $image = $request->image_category;
              $filename  = time().'.'.$image->getClientOriginalExtension();
              $path = public_path('uploads/images/'.$filename);
-             Image::make($image->getRealPath())->resize(400, 400)->save($path);
+             Image::make($image->getRealPath())->save($path);
              $image_category = $filename;
           }else{
              $image_category = 'none';
