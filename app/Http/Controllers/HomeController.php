@@ -40,6 +40,11 @@ class HomeController extends Controller
       return $categories;
     }
 
+    public function getAllAudios(){
+      $audios = Audio:all();
+      return $audios;
+    }
+
     public function getVideosByCategory($categoryId){
       return Video::where('categoryId',$categoryId)->get();
     }

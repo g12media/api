@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::get('/categories', 'HomeController@getCategories');
 Route::get('/videos/{categoryId}', 'HomeController@getVideosByCategory');
+Route::get('/audios', 'HomeController@getAllAudios');
 
 
 
