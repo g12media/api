@@ -41,7 +41,7 @@ class HomeController extends Controller
     }
 
     public function getAllAudios(){
-      $audios = Audio:all();
+      $audios = Audio::all();
       return $audios;
     }
 
