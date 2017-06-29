@@ -48,7 +48,7 @@ class AdminController extends Controller
       public function saveCategory(Request $request){
           $category = new Category;
           $category->name = $request->name_category;
-          if($request->imagen_diagnostica){
+          if($request->image_category){
              $image = $request->image_category;
              $filename  = time().'.'.$image->getClientOriginalExtension();
              $path = public_path('uploads/images/'.$filename);
@@ -74,7 +74,7 @@ class AdminController extends Controller
       public function updatecategory($id, Request $request){
           $category = Category::find($id);
           $category->name = $request->name_category;
-          if($request->imagen_diagnostica){
+          if($request->image_category){
              $image = $request->image_category;
              $filename  = time().'.'.$image->getClientOriginalExtension();
              $path = public_path('uploads/images/'.$filename);

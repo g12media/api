@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="control-label">Image Category:</label>
-                        <input type="file" class="form-control" value="{{$category->image}}" name="image_category" id="image_category" />
+                        <input type="file" class="form-control" name="image_category" id="image_category" />
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="control-label">Descripcion:</label>
