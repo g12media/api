@@ -40,6 +40,16 @@ class HomeController extends Controller
       return $categories;
     }
 
+    public function getTribusDate(){
+
+      $tribus = DB::table('tribus')
+      ->select('*')
+      ->get();
+
+      return $tribus;
+
+    }
+
     public function getAllAudios(){
       $audios = Audio::all();
       return $audios;

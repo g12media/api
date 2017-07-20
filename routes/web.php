@@ -20,6 +20,8 @@ Route::get('/categories', 'HomeController@getCategories');
 Route::get('/videos/{categoryId}', 'HomeController@getVideosByCategory');
 Route::get('/audios', 'HomeController@getAllAudios');
 
+Route::get('/tribus', 'HomeController@getTribusDate');
+
 
 
 //Login Controller's
